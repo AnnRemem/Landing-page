@@ -1,0 +1,61 @@
+@import 'normalize.scss';
+
+// === Mixins ===
+@mixin font-lato {
+    font-family: 'Lato', sans-serif;
+}
+
+@mixin font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+// === / Mixins ===
+
+// === Common ===
+
+body {
+    @include font-lato;
+}
+.section-outer {}
+.section-inner {
+    width: 1180px;
+    margin: 0 auto;
+}
+// === / Common ===
+
+// === header ===
+.section-header {
+    color: #ffffff;
+    background-color: url('../img/bd-header.png');
+
+    &-logo {}
+    &-content {}
+    &-wrapper {
+        &__title {}
+        &__subtitle {}
+        &__form {
+            &-input {}
+            &-button {}
+        }
+    }
+}
+// === / header ===
+
+// === promo ===
+.section-promo {}
+// === / promo ===
+
+// === founder ===
+.section-founder {}
+// === / fonder ===
+
+// === plans ===
+.section-plans {}
+// === / plans ===
+
+// === free ===
+.section-free {}
+// === / free ===
+
+// === footer ===
+.section-footer {}
+// === / footer ===
