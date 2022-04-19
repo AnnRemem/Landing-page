@@ -1,6 +1,5 @@
 @import 'normalize.scss';
 
-// === Mixins ===
 @mixin font-lato {
     font-family: 'Lato', sans-serif;
 }
@@ -8,13 +7,10 @@
 @mixin font-montserrat {
     font-family: 'Montserrat', sans-serif;
 }
-// === / Mixins ===
 
-// === Variables ===
 $color-white: #ffffff;
-// === / Variables ===
+$color-main: #414141;
 
-// === Common ===
 * {
     box-sizing: border-box;
 }
@@ -22,7 +18,7 @@ $color-white: #ffffff;
 body {
     @include font-lato;
 
-    color: #414141;
+    color: $color-main;
 }
 
 .section-outer {}
@@ -32,27 +28,79 @@ body {
 }
 
 .description-item {
-    .icon {
-        margin-bottom: 20px;
+    &__icon {
+        img {
+          width: 50%; 
+          height: auto; 
+        }
+        margin-bottom: 20px;  
     }
-    .title {
+    &__title {
         margin-bottom: 14px;
         font-size: 18px;
         line-height: 22px;
         font-weight: bold;
     }
-    .content {}
-    
-    .text {
+    &__text {
         font-size: 16px;
-        line-height: 27px;
+        line-height: 28px;
         font-weight: 300;
-        color: #6C6C6C;
+        color: #6c6c6c;
     }
 }
 
+@mixin start-button {
+    @include font-montserrat;
+
+    font-size: 16px;
+    margin: 0;
+    padding: 16px 20px;
+    outline: none;
+    border-radius: 4px;
+    color: $color-white;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+
+.btn-main {
+    @include start-button;
+
+    border: none;
+    background: linear-gradient(to right, #fe985b, #fe4fa7);
+    color: $color-white;
+
+    &:hover {
+        background: linear-gradient(to right, #fe4fa7, #fe985b);
+    }
+}
+
+.btn-secondary {
+    @include start-button;
+
+    border: 1px solid $color-main;
+    background: $color-white;
+    color: $color-main;
+    transition: .2s;
+
+    &:hover {
+        color: #fe4fa7;
+        border-color: #fe4fa7
+    }
+}
+
+.btn-free {
+    @include start-button;
+
+    border: none;
+    background: $color-white;
+    color: $color-main;
+}
+
 .section-header {
-    color: #ffffff;
+    color: $color-white;
     background: url('../img/bg-header.png') no-repeat 50% 50%;
     background-size: cover;
     position: relative;
@@ -88,6 +136,7 @@ body {
         align-items: center;
     }
     &-wrapper {
+        margin: 0 auto;
         &__title {}
         &__subtitle {
             text-align: center;
@@ -126,32 +175,22 @@ body {
                     outline: none;
                     border-radius: 4px;
                     width: 100%;
+                    transition: .2s;
 
                     &::placeholder {
                         color: $color-white;
                     }
-                }
-            }
-            &-button {
-                button {
-                    @include font-montserrat;
 
-                    font-size: 16px;
-                    margin: 0;
-                    padding: 16px 20px;
-                    border: none;
-                    background: linear-gradient(to right, #fe985b, #fe4fa7);
-                    outline: none;
-                    border-radius: 4px;
-                    color: $color-white;
+                    &:focus {
+                        background: rgba(255, 255, 255, .5);
+                    }
                 }
             }
+            &-button {}
         }
     }
 }
-// === / header ===
 
-// === promo ===
 .section-promo {
     padding-top: 120px;
     padding-bottom: 120px;
@@ -174,19 +213,9 @@ body {
             font-weight: bold;
             margin-bottom: 56px;
         }
-        .subtitle {
-            font-size: 18px;
-            line-height: 22px;
-            font-weight: bold;
-            // font-weight: 500;
-            margin-top: 30px;
-        }
-        .text {
-            font-size: 16px;
-            line-height: 27px;
-            font-weight: bold;
-            color: #6C6C6C;
-            margin-top: 14px;
+
+        .description-item {
+            margin-top: 28px;
         }
     }
     &__video {
@@ -201,31 +230,198 @@ body {
     padding-top: 86px;
     margin-top: 120px;
     border-top: 1px solid #e2e2e2;
+    text-align: center;
 
-    &__item {
-        .icon {
-            margin-bottom: 20px;
+   .description-item + .description-item {
+        margin-left: 40px;
+   }
+}
+
+.section-founder {
+    background-color: #f6fafd;
+    padding-top: 34px;
+
+    .section-inner {
+        display: flex;
+    }
+
+    &__img {
+        align-self: flex-end;
+    }
+    &__content {
+        align-self: center;
+        padding-left: 50px;
+
+        &-text {
+            @include font-montserrat;
+
+            font-size: 24px;
+            line-height: 40px;
         }
-        .title {
-            margin-bottom: 14px;
+        &-name {
+            font-size: 24px;
+            line-height: 29px;
+            font-weight: bold;
         }
-        .content {}
+        &-post {
+            font-size: 20px;
+            line-height: 29px;
+        }
     }
 }
-// === / promo ===
 
-// === founder ===
-.section-founder {}
-// === / fonder ===
+.section-plans {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    text-align: center;
 
-// === plans ===
-.section-plans {}
-// === / plans ===
+    &__title {
+        font-size: 36px;
+        line-height: 51px;
+        font-weight: bold;
+    }
+    &__subtitle {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 300;
+        width: 50%;
+        margin: 0 auto 80px;
+    }
+    &__list {
+        display: flex;
+        justify-content: center;
 
-// === free ===
-.section-free {}
-// === / free ===
+        &-item {
+            flex-basis: 370px;
+            padding: 60px 45px;
 
-// === footer ===
-.section-footer {}
-// === / footer ===
+            &_title {
+                font-size: 14px;
+                line-height: 17px;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-bottom: 26px;
+            }
+            &_price {
+                margin-bottom: 26px;
+                .prefix {
+                    font-size: 72px;
+                    line-height: 86px;
+                    font-weight: bold;
+                    color: #fe4fa7;
+                }
+                .postfix {
+                    font-size: 14px;
+                    line-height: 17px;
+                    font-weight: bold;
+                }
+            }
+            &_description {
+                font-size: 16px;
+                line-height: 28px;
+                font-weight: 300;
+                margin-bottom: 50px;
+            }
+            &_button {}
+
+            &.active {
+                background-color: #f6fafd;
+            }
+        }
+    }
+}
+
+.section-free {
+    text-align: center;
+    color: $color-white;
+    background: linear-gradient(to right, #fe985b, #fe4fa7);
+    padding-top: 120px;
+    padding-bottom: 120px;
+
+    &__title {
+        font-size: 66px;
+        line-height: 60px;
+        font-weight: bold;
+        margin-bottom: 26px;
+    }
+    &__description {
+        @include font-montserrat;
+
+        font-size: 20px;
+        line-height: 30px;
+        width: 50%;
+        margin: 0 auto 40px;
+    }
+    &__button {}
+}
+
+.section-footer {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    &__logo {
+        text-align: center;
+        font-size: 24px;
+        line-height: 29px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+    &__nav {
+        display: flex;
+        justify-content: center;
+        margin: 0 0 75px;
+        padding: 0;
+        list-style: none;
+
+        li {
+            & + li {
+                margin-left: 60px;
+            }
+            a {
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #464545;
+                text-decoration: none;
+                transition: .2s;
+
+                &.active,
+                &:hover {
+                    color: #fe50a6;
+                }
+            }
+        }
+    }
+    &__copyright_and_links {
+        @include font-montserrat;
+
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        line-height: 18px;
+        width: 60%;
+        margin: 0 auto;
+    }
+}
+
+.helper-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+
+    li {
+        & + li {
+            margin-left: 20px;
+        }
+        a {
+            color: #464545;
+            text-decoration: none;
+
+            &:hover {
+               text-decoration: underline; 
+            }
+        }
+    }
+}
