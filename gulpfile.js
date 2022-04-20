@@ -18,17 +18,18 @@ function style () {
         .pipe(browserSync.stream());
 }
 
-// function lintCss () {
-//     return gulp.src('./css/**/*.scss')
-//         .pipe(gulpStylelint({
-//             reporters: [
-//                 {
-//                     formatter: 'string', 
-//                     console: true
-//                 }
-//             ]
-//         }));
-// }
+function lintCss () {
+    return gulp.src('./css/**/*.scss')
+        .pipe(gulpStylelint({
+			fix: true,
+            reporters: [
+                {
+                    formatter: 'string', 
+                    console: true
+                }
+            ]
+        }))
+}
 
 function watch () {
     browserSync.init({
@@ -36,10 +37,10 @@ function watch () {
             baseDir: './'
         }
     })
-    watch('./css/**/*.scss', style)
-    watch('./*.html').on('change', browserSync.reload);
+    gulp.watch('./css/**/*.scss', style)
+    gulp.watch('./*.html').on('change', browserSync.reload);
 }
 
 exports.style = style;
-// exports.lintCss = lintCss;
+exports.lintCss = lintCss;
 exports.watch = watch;

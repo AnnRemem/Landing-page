@@ -1,11 +1,12 @@
-@import 'normalize.scss';
+/* stylelint-disable selector-class-pattern */
+@import "normalize.scss";
 
 @mixin font-lato {
-    font-family: 'Lato', sans-serif;
+    font-family: Lato, sans-serif;
 }
 
 @mixin font-montserrat {
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
 }
 
 $color-white: #fff;
@@ -29,21 +30,24 @@ body {
 .description-item {
     &__icon {
         img {
-          width: 50%; 
-          height: auto; 
+            width: 50%;
+            height: auto;
         }
-        margin-bottom: 20px;  
+
+        margin-bottom: 20px;
     }
+
     &__title {
         margin-bottom: 14px;
-        line-height: 22px;
         font-size: 18px;
         font-weight: bold;
+        line-height: 22px;
     }
+
     &__text {
-        line-height: 28px;
         font-size: 16px;
         font-weight: 300;
+        line-height: 28px;
         color: #6c6c6c;
     }
 }
@@ -51,25 +55,23 @@ body {
 @mixin start-button {
     @include font-montserrat;
 
-    font-size: 16px;
+    display: inline-block;
     padding: 16px 20px;
     margin: 0;
-    outline: none;
-    border-radius: 4px;
+    font-size: 16px;
     color: $color-white;
-    cursor: pointer;
     text-decoration: none;
-    display: inline-block;
+    cursor: pointer;
+    border-radius: 4px;
+    outline: none;
 }
-
-
 
 .btn-main {
     @include start-button;
 
-    border: none;
-    background: linear-gradient(to right, #fe985b, #fe4fa7);
     color: $color-white;
+    background: linear-gradient(to right, #fe985b, #fe4fa7);
+    border: none;
 
     &:hover {
         background: linear-gradient(to right, #fe4fa7, #fe985b);
@@ -79,85 +81,81 @@ body {
 .btn-secondary {
     @include start-button;
 
-    border: 1px solid $color-main;
-    background: $color-white;
     color: $color-main;
+    background: $color-white;
+    border: 1px solid $color-main;
     transition: .2s;
 
     &:hover {
         color: #fe4fa7;
-        border-color: #fe4fa7
+        border-color: #fe4fa7;
     }
 }
 
 .btn-free {
     @include start-button;
 
-    border: none;
-    background: $color-white;
     color: $color-main;
+    background: $color-white;
+    border: none;
 }
 
 .section-header {
-    color: $color-white;
-    background: url('../img/bg-header.png') no-repeat 50% 50%;
-    background-size: cover;
     position: relative;
+    color: $color-white;
+    background: url("../img/bg-header.png") no-repeat 50% 50%;
+    background-size: cover;
 
     .section-inner {
-        height: 100vh;
         position: relative;
         z-index: 10;
         display: flex;
         flex-direction: column;
+        height: 100vh;
     }
 
     &::before {
-        content: '';
         position: absolute;
-        z-index: 5;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-        background-color: rgba(20, 39, 41, .6);
+        z-index: 5;
+        content: "";
+        background-color: rgb(20 39 41 / 60%);
     }
 
     &-logo {
-        font-weight: bold;
-        font-size: 24px;
         flex-shrink: 1;
         padding-top: 35px;
+        font-size: 24px;
+        font-weight: bold;
     }
 
     &-content {
-        flex-grow: 1;
         display: flex;
+        flex-grow: 1;
         align-items: center;
     }
 
     &-wrapper {
         margin: 0 auto;
 
-        &__subtitle {
-            text-align: center;
-        }
-
         &__title {
+            margin-bottom: 16px;
+            font-size: 56px;
             font-weight: bold;
             line-height: 60px;
-            font-size: 56px;
-            margin-bottom: 16px;
         }
 
         &__subtitle {
             @include font-montserrat;
 
-            line-height: 32px;
-            font-size: 18px;
             width: 80%;
             margin: 0 auto 44px;
-
+            font-size: 18px;
+            line-height: 32px;
+            text-align: center;
         }
 
         &__form {
@@ -170,15 +168,15 @@ body {
                 input {
                     @include font-montserrat;
 
-                    border: none;
-                    background: rgba(255, 255, 255, .25);
-                    color: $color-white;
-                    font-size: 16px;
-                    margin: 0;
-                    padding: 16px 20px;
-                    outline: none;
-                    border-radius: 4px;
                     width: 100%;
+                    padding: 16px 20px;
+                    margin: 0;
+                    font-size: 16px;
+                    color: $color-white;
+                    background: rgb(255 255 255 / 25%);
+                    border: none;
+                    border-radius: 4px;
+                    outline: none;
                     transition: .2s;
 
                     &::placeholder {
@@ -186,7 +184,7 @@ body {
                     }
 
                     &:focus {
-                        background: rgba(255, 255, 255, .5);
+                        background: rgb(255 255 255 / 50%);
                     }
                 }
             }
@@ -211,10 +209,10 @@ body {
         padding-right: 90px;
 
         .title {
-            line-height: 51px;
+            margin-bottom: 56px;
             font-size: 36px;
             font-weight: bold;
-            margin-bottom: 56px;
+            line-height: 51px;
         }
 
         .description-item {
@@ -229,21 +227,22 @@ body {
         }
     }
 }
+
 .section-promo-2 {
     display: flex;
     padding-top: 86px;
     margin-top: 120px;
-    border-top: 1px solid #e2e2e2;
     text-align: center;
+    border-top: 1px solid #e2e2e2;
 
-   .description-item + .description-item {
+    .description-item + .description-item {
         margin-left: 40px;
-   }
+    }
 }
 
 .section-founder {
-    background-color: #f6fafd;
     padding-top: 34px;
+    background-color: #f6fafd;
 
     .section-inner {
         display: flex;
@@ -260,19 +259,19 @@ body {
         &-text {
             @include font-montserrat;
 
-            line-height: 40px;
             font-size: 24px;
+            line-height: 40px;
         }
 
         &-name {
-            line-height: 29px;
             font-size: 24px;
             font-weight: bold;
+            line-height: 29px;
         }
 
         &-post {
-            line-height: 29px;
             font-size: 20px;
+            line-height: 29px;
         }
     }
 }
@@ -283,17 +282,17 @@ body {
     text-align: center;
 
     &__title {
-        line-height: 51px;
         font-size: 36px;
         font-weight: bold;
+        line-height: 51px;
     }
 
     &__subtitle {
-        line-height: 28px;
-        font-size: 16px;
-        font-weight: 300;
         width: 50%;
         margin: 0 auto 80px;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 28px;
     }
 
     &__list {
@@ -305,33 +304,35 @@ body {
             padding: 60px 45px;
 
             &_title {
-                line-height: 17px;
+                margin-bottom: 26px;
                 font-size: 14px;
                 font-weight: bold;
+                line-height: 17px;
                 text-transform: uppercase;
-                margin-bottom: 26px;
             }
 
             &_price {
                 margin-bottom: 26px;
+
                 .prefix {
-                    line-height: 86px;
                     font-size: 72px;
                     font-weight: bold;
+                    line-height: 86px;
                     color: #fe4fa7;
                 }
+
                 .postfix {
-                    line-height: 17px;
                     font-size: 14px;
                     font-weight: bold;
+                    line-height: 17px;
                 }
             }
-            
+
             &_description {
-                line-height: 28px;
+                margin-bottom: 50px;
                 font-size: 16px;
                 font-weight: 300;
-                margin-bottom: 50px;
+                line-height: 28px;
             }
 
             &.active {
@@ -342,29 +343,27 @@ body {
 }
 
 .section-free {
-    text-align: center;
-    color: $color-white;
-    background: linear-gradient(to right, #fe985b, #fe4fa7);
     padding-top: 120px;
     padding-bottom: 120px;
+    color: $color-white;
+    text-align: center;
+    background: linear-gradient(to right, #fe985b, #fe4fa7);
 
     &__title {
-        line-height: 60px;
+        margin-bottom: 26px;
         font-size: 66px;
         font-weight: bold;
-        margin-bottom: 26px;
+        line-height: 60px;
     }
 
     &__description {
         @include font-montserrat;
 
-        line-height: 30px;
-        font-size: 20px;
         width: 50%;
         margin: 0 auto 40px;
+        font-size: 20px;
+        line-height: 30px;
     }
-
-    &__button {}
 }
 
 .section-footer {
@@ -372,31 +371,32 @@ body {
     padding-bottom: 80px;
 
     &__logo {
-        text-align: center;
-        line-height: 29px;
+        margin-bottom: 30px;
         font-size: 24px;
         font-weight: bold;
-        margin-bottom: 30px;
+        line-height: 29px;
+        text-align: center;
     }
 
     &__nav {
         display: flex;
         justify-content: center;
-        margin: 0 0 75px;
         padding: 0;
+        margin: 0 0 75px;
         list-style: none;
 
         li {
             & + li {
                 margin-left: 60px;
             }
+
             a {
-                line-height: 20px;
                 font-size: 14px;
                 font-weight: bold;
-                text-transform: uppercase;
+                line-height: 20px;
                 color: #464545;
                 text-decoration: none;
+                text-transform: uppercase;
                 transition: .2s;
 
                 &.active,
@@ -412,30 +412,30 @@ body {
 
         display: flex;
         justify-content: space-between;
-        line-height: 18px;
-        font-size: 14px;
         width: 60%;
         margin: 0 auto;
+        font-size: 14px;
+        line-height: 18px;
     }
 }
 
 .helper-links {
-    margin: 0;
-    padding: 0;
-    list-style: none;
     display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 
     .helper-links_item {
         & + .helper-links_item {
             margin-left: 20px;
         }
-        
+
         .helper-links_item-links {
             color: #464545;
             text-decoration: none;
 
             &:hover {
-               text-decoration: underline; 
+                text-decoration: underline;
             }
         }
     }
